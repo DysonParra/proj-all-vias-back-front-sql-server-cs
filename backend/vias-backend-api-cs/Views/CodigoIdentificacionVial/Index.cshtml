@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Project.Models.CodigoIdentificacionVial>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNombreEjeVia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNombreExtremoInicial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNombreExtremoFinal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrTipoMalla)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNombreEjeVia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNombreExtremoInicial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNombreExtremoFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrTipoMalla)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StrCiv">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StrCiv">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StrCiv">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

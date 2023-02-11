@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Project.Models.Vehiculo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StrPlacaVehiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNumeroInterno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrTara)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrEjes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrVolumenVehiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrInterno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrPatronado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrObservacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrIdTransportador)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrPlacaVehiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNumeroInterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrTara)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrEjes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrVolumenVehiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrInterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrPatronado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrObservacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrIdTransportador)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StrCodigo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StrCodigo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StrCodigo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,251 @@
+﻿@model IEnumerable<Project.Models.Ingreso>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StrPlaca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrConductor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntCedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrProveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrFechaEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrHoraEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrFechaPesoVacio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrHoraPesoVacio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrFechaDespachoPlanta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrHoraDespachoPlanta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrFechaPesoLleno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrHoraPesoLleno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrFechaSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrHoraSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntBruto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntTara)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntNeto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNoShipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNoSello)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNoR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNoContenedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrOperario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNickOperario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrObservaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrNoInterno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrCodigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrTipoVehiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrTipoProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrDireccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrEntregadoPor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrRecibidoPor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrUnidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrVolumen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrMateriaPrima)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrPlanta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrTransportadora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrOrigen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrPlaca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrConductor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntCedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrFechaEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrHoraEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrFechaPesoVacio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrHoraPesoVacio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrFechaDespachoPlanta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrHoraDespachoPlanta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrFechaPesoLleno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrHoraPesoLleno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrFechaSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrHoraSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntBruto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntTara)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntNeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNoShipment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNoSello)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNoR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNoContenedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrOperario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNickOperario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrObservaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrNoInterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrCodigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrTipoVehiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrTipoProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrDireccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrEntregadoPor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrRecibidoPor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrUnidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrVolumen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrMateriaPrima)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrPlanta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrTransportadora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrOrigen)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IntNoTiquete">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IntNoTiquete">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IntNoTiquete">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
