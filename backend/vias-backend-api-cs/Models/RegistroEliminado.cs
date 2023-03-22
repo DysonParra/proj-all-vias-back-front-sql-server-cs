@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {RegistroEliminado} se encarga de realizar tareas específicas.
+ * @fileoverview    {RegistroEliminado}
  *
  * @version         2.0
  *

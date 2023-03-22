@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Planta} se encarga de realizar tareas específicas.
+ * @fileoverview    {Planta}
  *
  * @version         2.0
  *

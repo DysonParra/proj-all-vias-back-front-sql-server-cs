@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Ayudante} se encarga de realizar tareas específicas.
+ * @fileoverview    {Ayudante}
  *
  * @version         2.0
  *
