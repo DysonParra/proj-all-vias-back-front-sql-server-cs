@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code CodigoIdentificacionVial}.
+ * TODO: Description of {@code CodigoIdentificacionVial}.
  *
  * @author Dyson Parra
  */

@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code Planta}.
+ * TODO: Description of {@code Planta}.
  *
  * @author Dyson Parra
  */

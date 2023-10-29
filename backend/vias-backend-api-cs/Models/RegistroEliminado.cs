@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code RegistroEliminado}.
+ * TODO: Description of {@code RegistroEliminado}.
  *
  * @author Dyson Parra
  */

@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code MateriaPrima}.
+ * TODO: Description of {@code MateriaPrima}.
  *
  * @author Dyson Parra
  */
