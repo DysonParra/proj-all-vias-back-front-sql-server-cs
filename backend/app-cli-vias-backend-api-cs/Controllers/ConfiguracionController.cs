@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class ConfiguracionController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code ConfiguracionController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ConfiguracionController : Controller {
         private readonly ViasContext _context;
 
-        public ConfiguracionController(ViasContext context)
-        {
+        public ConfiguracionController(ViasContext context) {
             _context = context;
         }
 
         // GET: Configuracion
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Configuracion.ToListAsync());
         }
 
         // GET: Configuracion/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.Configuracion == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.Configuracion == null) {
                 return NotFound();
             }
 
             var configuracion = await _context.Configuracion
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (configuracion == null)
-            {
+            if (configuracion == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: Configuracion/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrCodigo,StrParametro,StrValor")] Configuracion configuracion)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrCodigo,StrParametro,StrValor")] Configuracion configuracion) {
+            if (ModelState.IsValid) {
                 _context.Add(configuracion);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: Configuracion/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.Configuracion == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.Configuracion == null) {
                 return NotFound();
             }
 
             var configuracion = await _context.Configuracion.FindAsync(id);
-            if (configuracion == null)
-            {
+            if (configuracion == null) {
                 return NotFound();
             }
             return View(configuracion);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrParametro,StrValor")] Configuracion configuracion)
-        {
-            if (id != configuracion.StrCodigo)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrParametro,StrValor")] Configuracion configuracion) {
+            if (id != configuracion.StrCodigo) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(configuracion);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ConfiguracionExists(configuracion.StrCodigo))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!ConfiguracionExists(configuracion.StrCodigo)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: Configuracion/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.Configuracion == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.Configuracion == null) {
                 return NotFound();
             }
 
             var configuracion = await _context.Configuracion
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (configuracion == null)
-            {
+            if (configuracion == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: Configuracion/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.Configuracion == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.Configuracion == null) {
                 return Problem("Entity set 'ViasContext.Configuracion'  is null.");
             }
             var configuracion = await _context.Configuracion.FindAsync(id);
-            if (configuracion != null)
-            {
+            if (configuracion != null) {
                 _context.Configuracion.Remove(configuracion);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ConfiguracionExists(string id)
-        {
+        private bool ConfiguracionExists(string id) {
             return _context.Configuracion.Any(e => e.StrCodigo == id);
         }
     }

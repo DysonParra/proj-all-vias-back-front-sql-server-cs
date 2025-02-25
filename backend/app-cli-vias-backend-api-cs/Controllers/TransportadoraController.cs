@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class TransportadoraController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code TransportadoraController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class TransportadoraController : Controller {
         private readonly ViasContext _context;
 
-        public TransportadoraController(ViasContext context)
-        {
+        public TransportadoraController(ViasContext context) {
             _context = context;
         }
 
         // GET: Transportadora
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Transportadora.ToListAsync());
         }
 
         // GET: Transportadora/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.Transportadora == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.Transportadora == null) {
                 return NotFound();
             }
 
             var transportadora = await _context.Transportadora
                 .FirstOrDefaultAsync(m => m.StrNombre == id);
-            if (transportadora == null)
-            {
+            if (transportadora == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: Transportadora/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrNombre,StrNit,StrDireccion,StrTelefono,StrFax,StrObservaciones")] Transportadora transportadora)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrNombre,StrNit,StrDireccion,StrTelefono,StrFax,StrObservaciones")] Transportadora transportadora) {
+            if (ModelState.IsValid) {
                 _context.Add(transportadora);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: Transportadora/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.Transportadora == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.Transportadora == null) {
                 return NotFound();
             }
 
             var transportadora = await _context.Transportadora.FindAsync(id);
-            if (transportadora == null)
-            {
+            if (transportadora == null) {
                 return NotFound();
             }
             return View(transportadora);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrNombre,StrNit,StrDireccion,StrTelefono,StrFax,StrObservaciones")] Transportadora transportadora)
-        {
-            if (id != transportadora.StrNombre)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrNombre,StrNit,StrDireccion,StrTelefono,StrFax,StrObservaciones")] Transportadora transportadora) {
+            if (id != transportadora.StrNombre) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(transportadora);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TransportadoraExists(transportadora.StrNombre))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!TransportadoraExists(transportadora.StrNombre)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: Transportadora/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.Transportadora == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.Transportadora == null) {
                 return NotFound();
             }
 
             var transportadora = await _context.Transportadora
                 .FirstOrDefaultAsync(m => m.StrNombre == id);
-            if (transportadora == null)
-            {
+            if (transportadora == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: Transportadora/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.Transportadora == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.Transportadora == null) {
                 return Problem("Entity set 'ViasContext.Transportadora'  is null.");
             }
             var transportadora = await _context.Transportadora.FindAsync(id);
-            if (transportadora != null)
-            {
+            if (transportadora != null) {
                 _context.Transportadora.Remove(transportadora);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TransportadoraExists(string id)
-        {
+        private bool TransportadoraExists(string id) {
             return _context.Transportadora.Any(e => e.StrNombre == id);
         }
     }

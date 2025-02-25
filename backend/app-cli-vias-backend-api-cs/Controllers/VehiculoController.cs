@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class VehiculoController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code VehiculoController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class VehiculoController : Controller {
         private readonly ViasContext _context;
 
-        public VehiculoController(ViasContext context)
-        {
+        public VehiculoController(ViasContext context) {
             _context = context;
         }
 
         // GET: Vehiculo
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Vehiculo.ToListAsync());
         }
 
         // GET: Vehiculo/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.Vehiculo == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.Vehiculo == null) {
                 return NotFound();
             }
 
             var vehiculo = await _context.Vehiculo
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (vehiculo == null)
-            {
+            if (vehiculo == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: Vehiculo/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrCodigo,StrPlacaVehiculo,StrNumeroInterno,StrTara,StrEjes,StrVolumenVehiculo,StrInterno,StrPatronado,StrObservacion,StrIdTransportador")] Vehiculo vehiculo)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrCodigo,StrPlacaVehiculo,StrNumeroInterno,StrTara,StrEjes,StrVolumenVehiculo,StrInterno,StrPatronado,StrObservacion,StrIdTransportador")] Vehiculo vehiculo) {
+            if (ModelState.IsValid) {
                 _context.Add(vehiculo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: Vehiculo/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.Vehiculo == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.Vehiculo == null) {
                 return NotFound();
             }
 
             var vehiculo = await _context.Vehiculo.FindAsync(id);
-            if (vehiculo == null)
-            {
+            if (vehiculo == null) {
                 return NotFound();
             }
             return View(vehiculo);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrPlacaVehiculo,StrNumeroInterno,StrTara,StrEjes,StrVolumenVehiculo,StrInterno,StrPatronado,StrObservacion,StrIdTransportador")] Vehiculo vehiculo)
-        {
-            if (id != vehiculo.StrCodigo)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrPlacaVehiculo,StrNumeroInterno,StrTara,StrEjes,StrVolumenVehiculo,StrInterno,StrPatronado,StrObservacion,StrIdTransportador")] Vehiculo vehiculo) {
+            if (id != vehiculo.StrCodigo) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(vehiculo);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!VehiculoExists(vehiculo.StrCodigo))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!VehiculoExists(vehiculo.StrCodigo)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: Vehiculo/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.Vehiculo == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.Vehiculo == null) {
                 return NotFound();
             }
 
             var vehiculo = await _context.Vehiculo
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (vehiculo == null)
-            {
+            if (vehiculo == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: Vehiculo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.Vehiculo == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.Vehiculo == null) {
                 return Problem("Entity set 'ViasContext.Vehiculo'  is null.");
             }
             var vehiculo = await _context.Vehiculo.FindAsync(id);
-            if (vehiculo != null)
-            {
+            if (vehiculo != null) {
                 _context.Vehiculo.Remove(vehiculo);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool VehiculoExists(string id)
-        {
+        private bool VehiculoExists(string id) {
             return _context.Vehiculo.Any(e => e.StrCodigo == id);
         }
     }

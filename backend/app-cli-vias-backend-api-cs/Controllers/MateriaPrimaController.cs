@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class MateriaPrimaController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code MateriaPrimaController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class MateriaPrimaController : Controller {
         private readonly ViasContext _context;
 
-        public MateriaPrimaController(ViasContext context)
-        {
+        public MateriaPrimaController(ViasContext context) {
             _context = context;
         }
 
         // GET: MateriaPrima
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.MateriaPrima.ToListAsync());
         }
 
         // GET: MateriaPrima/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.MateriaPrima == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.MateriaPrima == null) {
                 return NotFound();
             }
 
             var materiaPrima = await _context.MateriaPrima
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (materiaPrima == null)
-            {
+            if (materiaPrima == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: MateriaPrima/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] MateriaPrima materiaPrima)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] MateriaPrima materiaPrima) {
+            if (ModelState.IsValid) {
                 _context.Add(materiaPrima);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: MateriaPrima/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.MateriaPrima == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.MateriaPrima == null) {
                 return NotFound();
             }
 
             var materiaPrima = await _context.MateriaPrima.FindAsync(id);
-            if (materiaPrima == null)
-            {
+            if (materiaPrima == null) {
                 return NotFound();
             }
             return View(materiaPrima);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] MateriaPrima materiaPrima)
-        {
-            if (id != materiaPrima.StrCodigo)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] MateriaPrima materiaPrima) {
+            if (id != materiaPrima.StrCodigo) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(materiaPrima);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MateriaPrimaExists(materiaPrima.StrCodigo))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!MateriaPrimaExists(materiaPrima.StrCodigo)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: MateriaPrima/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.MateriaPrima == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.MateriaPrima == null) {
                 return NotFound();
             }
 
             var materiaPrima = await _context.MateriaPrima
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (materiaPrima == null)
-            {
+            if (materiaPrima == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: MateriaPrima/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.MateriaPrima == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.MateriaPrima == null) {
                 return Problem("Entity set 'ViasContext.MateriaPrima'  is null.");
             }
             var materiaPrima = await _context.MateriaPrima.FindAsync(id);
-            if (materiaPrima != null)
-            {
+            if (materiaPrima != null) {
                 _context.MateriaPrima.Remove(materiaPrima);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MateriaPrimaExists(string id)
-        {
+        private bool MateriaPrimaExists(string id) {
             return _context.MateriaPrima.Any(e => e.StrCodigo == id);
         }
     }

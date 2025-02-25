@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class ProductoController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code ProductoController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ProductoController : Controller {
         private readonly ViasContext _context;
 
-        public ProductoController(ViasContext context)
-        {
+        public ProductoController(ViasContext context) {
             _context = context;
         }
 
         // GET: Producto
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Producto.ToListAsync());
         }
 
         // GET: Producto/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.Producto == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.Producto == null) {
                 return NotFound();
             }
 
             var producto = await _context.Producto
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (producto == null)
-            {
+            if (producto == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: Producto/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] Producto producto)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] Producto producto) {
+            if (ModelState.IsValid) {
                 _context.Add(producto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: Producto/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.Producto == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.Producto == null) {
                 return NotFound();
             }
 
             var producto = await _context.Producto.FindAsync(id);
-            if (producto == null)
-            {
+            if (producto == null) {
                 return NotFound();
             }
             return View(producto);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] Producto producto)
-        {
-            if (id != producto.StrCodigo)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] Producto producto) {
+            if (id != producto.StrCodigo) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(producto);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductoExists(producto.StrCodigo))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!ProductoExists(producto.StrCodigo)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: Producto/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.Producto == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.Producto == null) {
                 return NotFound();
             }
 
             var producto = await _context.Producto
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (producto == null)
-            {
+            if (producto == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: Producto/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.Producto == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.Producto == null) {
                 return Problem("Entity set 'ViasContext.Producto'  is null.");
             }
             var producto = await _context.Producto.FindAsync(id);
-            if (producto != null)
-            {
+            if (producto != null) {
                 _context.Producto.Remove(producto);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductoExists(string id)
-        {
+        private bool ProductoExists(string id) {
             return _context.Producto.Any(e => e.StrCodigo == id);
         }
     }

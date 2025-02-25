@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class IndicadorController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code IndicadorController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class IndicadorController : Controller {
         private readonly ViasContext _context;
 
-        public IndicadorController(ViasContext context)
-        {
+        public IndicadorController(ViasContext context) {
             _context = context;
         }
 
         // GET: Indicador
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Indicador.ToListAsync());
         }
 
         // GET: Indicador/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.Indicador == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.Indicador == null) {
                 return NotFound();
             }
 
             var indicador = await _context.Indicador
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (indicador == null)
-            {
+            if (indicador == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: Indicador/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrTamanoTrama,StrPosicionInicialPeso,StrTotalDatosPeso,StrCaracterFinTrama,StrCaracterInicioTrama")] Indicador indicador)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrTamanoTrama,StrPosicionInicialPeso,StrTotalDatosPeso,StrCaracterFinTrama,StrCaracterInicioTrama")] Indicador indicador) {
+            if (ModelState.IsValid) {
                 _context.Add(indicador);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: Indicador/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.Indicador == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.Indicador == null) {
                 return NotFound();
             }
 
             var indicador = await _context.Indicador.FindAsync(id);
-            if (indicador == null)
-            {
+            if (indicador == null) {
                 return NotFound();
             }
             return View(indicador);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrTamanoTrama,StrPosicionInicialPeso,StrTotalDatosPeso,StrCaracterFinTrama,StrCaracterInicioTrama")] Indicador indicador)
-        {
-            if (id != indicador.StrCodigo)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrTamanoTrama,StrPosicionInicialPeso,StrTotalDatosPeso,StrCaracterFinTrama,StrCaracterInicioTrama")] Indicador indicador) {
+            if (id != indicador.StrCodigo) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(indicador);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!IndicadorExists(indicador.StrCodigo))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!IndicadorExists(indicador.StrCodigo)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: Indicador/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.Indicador == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.Indicador == null) {
                 return NotFound();
             }
 
             var indicador = await _context.Indicador
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (indicador == null)
-            {
+            if (indicador == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: Indicador/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.Indicador == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.Indicador == null) {
                 return Problem("Entity set 'ViasContext.Indicador'  is null.");
             }
             var indicador = await _context.Indicador.FindAsync(id);
-            if (indicador != null)
-            {
+            if (indicador != null) {
                 _context.Indicador.Remove(indicador);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool IndicadorExists(string id)
-        {
+        private bool IndicadorExists(string id) {
             return _context.Indicador.Any(e => e.StrCodigo == id);
         }
     }

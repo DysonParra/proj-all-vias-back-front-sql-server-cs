@@ -19,13 +19,17 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
 
-namespace Vias.Data
-{
-    public class ViasContext : DbContext
-    {
+namespace Vias.Data {
+
+    /**
+     * TODO: Description of {@code ViasContext}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ViasContext : DbContext {
         public ViasContext (DbContextOptions<ViasContext> options)
-            : base(options)
-        {
+            : base(options) {
         }
 
         public DbSet<Project.Models.Ayudante> Ayudante { get; set; } = default!;

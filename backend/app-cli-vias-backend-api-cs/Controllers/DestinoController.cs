@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class DestinoController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code DestinoController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class DestinoController : Controller {
         private readonly ViasContext _context;
 
-        public DestinoController(ViasContext context)
-        {
+        public DestinoController(ViasContext context) {
             _context = context;
         }
 
         // GET: Destino
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Destino.ToListAsync());
         }
 
         // GET: Destino/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.Destino == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.Destino == null) {
                 return NotFound();
             }
 
             var destino = await _context.Destino
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (destino == null)
-            {
+            if (destino == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: Destino/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles")] Destino destino)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles")] Destino destino) {
+            if (ModelState.IsValid) {
                 _context.Add(destino);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: Destino/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.Destino == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.Destino == null) {
                 return NotFound();
             }
 
             var destino = await _context.Destino.FindAsync(id);
-            if (destino == null)
-            {
+            if (destino == null) {
                 return NotFound();
             }
             return View(destino);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles")] Destino destino)
-        {
-            if (id != destino.StrCodigo)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles")] Destino destino) {
+            if (id != destino.StrCodigo) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(destino);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!DestinoExists(destino.StrCodigo))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!DestinoExists(destino.StrCodigo)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: Destino/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.Destino == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.Destino == null) {
                 return NotFound();
             }
 
             var destino = await _context.Destino
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (destino == null)
-            {
+            if (destino == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: Destino/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.Destino == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.Destino == null) {
                 return Problem("Entity set 'ViasContext.Destino'  is null.");
             }
             var destino = await _context.Destino.FindAsync(id);
-            if (destino != null)
-            {
+            if (destino != null) {
                 _context.Destino.Remove(destino);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DestinoExists(string id)
-        {
+        private bool DestinoExists(string id) {
             return _context.Destino.Any(e => e.StrCodigo == id);
         }
     }

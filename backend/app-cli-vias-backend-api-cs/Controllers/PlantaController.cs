@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class PlantaController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code PlantaController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class PlantaController : Controller {
         private readonly ViasContext _context;
 
-        public PlantaController(ViasContext context)
-        {
+        public PlantaController(ViasContext context) {
             _context = context;
         }
 
         // GET: Planta
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Planta.ToListAsync());
         }
 
         // GET: Planta/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.Planta == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.Planta == null) {
                 return NotFound();
             }
 
             var planta = await _context.Planta
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (planta == null)
-            {
+            if (planta == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: Planta/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles")] Planta planta)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles")] Planta planta) {
+            if (ModelState.IsValid) {
                 _context.Add(planta);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: Planta/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.Planta == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.Planta == null) {
                 return NotFound();
             }
 
             var planta = await _context.Planta.FindAsync(id);
-            if (planta == null)
-            {
+            if (planta == null) {
                 return NotFound();
             }
             return View(planta);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles")] Planta planta)
-        {
-            if (id != planta.StrCodigo)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles")] Planta planta) {
+            if (id != planta.StrCodigo) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(planta);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PlantaExists(planta.StrCodigo))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!PlantaExists(planta.StrCodigo)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: Planta/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.Planta == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.Planta == null) {
                 return NotFound();
             }
 
             var planta = await _context.Planta
                 .FirstOrDefaultAsync(m => m.StrCodigo == id);
-            if (planta == null)
-            {
+            if (planta == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: Planta/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.Planta == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.Planta == null) {
                 return Problem("Entity set 'ViasContext.Planta'  is null.");
             }
             var planta = await _context.Planta.FindAsync(id);
-            if (planta != null)
-            {
+            if (planta != null) {
                 _context.Planta.Remove(planta);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PlantaExists(string id)
-        {
+        private bool PlantaExists(string id) {
             return _context.Planta.Any(e => e.StrCodigo == id);
         }
     }

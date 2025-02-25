@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class CodigoIdentificacionVialController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code CodigoIdentificacionVialController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class CodigoIdentificacionVialController : Controller {
         private readonly ViasContext _context;
 
-        public CodigoIdentificacionVialController(ViasContext context)
-        {
+        public CodigoIdentificacionVialController(ViasContext context) {
             _context = context;
         }
 
         // GET: CodigoIdentificacionVial
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.CodigoIdentificacionVial.ToListAsync());
         }
 
         // GET: CodigoIdentificacionVial/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.CodigoIdentificacionVial == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.CodigoIdentificacionVial == null) {
                 return NotFound();
             }
 
             var codigoIdentificacionVial = await _context.CodigoIdentificacionVial
                 .FirstOrDefaultAsync(m => m.StrCiv == id);
-            if (codigoIdentificacionVial == null)
-            {
+            if (codigoIdentificacionVial == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: CodigoIdentificacionVial/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrCiv,StrNombreEjeVia,StrNombreExtremoInicial,StrNombreExtremoFinal,StrTipoMalla")] CodigoIdentificacionVial codigoIdentificacionVial)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrCiv,StrNombreEjeVia,StrNombreExtremoInicial,StrNombreExtremoFinal,StrTipoMalla")] CodigoIdentificacionVial codigoIdentificacionVial) {
+            if (ModelState.IsValid) {
                 _context.Add(codigoIdentificacionVial);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: CodigoIdentificacionVial/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.CodigoIdentificacionVial == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.CodigoIdentificacionVial == null) {
                 return NotFound();
             }
 
             var codigoIdentificacionVial = await _context.CodigoIdentificacionVial.FindAsync(id);
-            if (codigoIdentificacionVial == null)
-            {
+            if (codigoIdentificacionVial == null) {
                 return NotFound();
             }
             return View(codigoIdentificacionVial);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrCiv,StrNombreEjeVia,StrNombreExtremoInicial,StrNombreExtremoFinal,StrTipoMalla")] CodigoIdentificacionVial codigoIdentificacionVial)
-        {
-            if (id != codigoIdentificacionVial.StrCiv)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrCiv,StrNombreEjeVia,StrNombreExtremoInicial,StrNombreExtremoFinal,StrTipoMalla")] CodigoIdentificacionVial codigoIdentificacionVial) {
+            if (id != codigoIdentificacionVial.StrCiv) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(codigoIdentificacionVial);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CodigoIdentificacionVialExists(codigoIdentificacionVial.StrCiv))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!CodigoIdentificacionVialExists(codigoIdentificacionVial.StrCiv)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: CodigoIdentificacionVial/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.CodigoIdentificacionVial == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.CodigoIdentificacionVial == null) {
                 return NotFound();
             }
 
             var codigoIdentificacionVial = await _context.CodigoIdentificacionVial
                 .FirstOrDefaultAsync(m => m.StrCiv == id);
-            if (codigoIdentificacionVial == null)
-            {
+            if (codigoIdentificacionVial == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: CodigoIdentificacionVial/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.CodigoIdentificacionVial == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.CodigoIdentificacionVial == null) {
                 return Problem("Entity set 'ViasContext.CodigoIdentificacionVial'  is null.");
             }
             var codigoIdentificacionVial = await _context.CodigoIdentificacionVial.FindAsync(id);
-            if (codigoIdentificacionVial != null)
-            {
+            if (codigoIdentificacionVial != null) {
                 _context.CodigoIdentificacionVial.Remove(codigoIdentificacionVial);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CodigoIdentificacionVialExists(string id)
-        {
+        private bool CodigoIdentificacionVialExists(string id) {
             return _context.CodigoIdentificacionVial.Any(e => e.StrCiv == id);
         }
     }

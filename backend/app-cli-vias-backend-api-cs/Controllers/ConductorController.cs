@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class ConductorController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code ConductorController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ConductorController : Controller {
         private readonly ViasContext _context;
 
-        public ConductorController(ViasContext context)
-        {
+        public ConductorController(ViasContext context) {
             _context = context;
         }
 
         // GET: Conductor
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.Conductor.ToListAsync());
         }
 
         // GET: Conductor/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Conductor == null)
-            {
+        public async Task<IActionResult> Details(int? id) {
+            if (id == null || _context.Conductor == null) {
                 return NotFound();
             }
 
             var conductor = await _context.Conductor
                 .FirstOrDefaultAsync(m => m.IntCedula == id);
-            if (conductor == null)
-            {
+            if (conductor == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: Conductor/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IntCedula,StrNombre,StrEstado")] Conductor conductor)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IntCedula,StrNombre,StrEstado")] Conductor conductor) {
+            if (ModelState.IsValid) {
                 _context.Add(conductor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: Conductor/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Conductor == null)
-            {
+        public async Task<IActionResult> Edit(int? id) {
+            if (id == null || _context.Conductor == null) {
                 return NotFound();
             }
 
             var conductor = await _context.Conductor.FindAsync(id);
-            if (conductor == null)
-            {
+            if (conductor == null) {
                 return NotFound();
             }
             return View(conductor);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("IntCedula,StrNombre,StrEstado")] Conductor conductor)
-        {
-            if (id != conductor.IntCedula)
-            {
+        public async Task<IActionResult> Edit(int? id, [Bind("IntCedula,StrNombre,StrEstado")] Conductor conductor) {
+            if (id != conductor.IntCedula) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(conductor);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ConductorExists(conductor.IntCedula))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!ConductorExists(conductor.IntCedula)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: Conductor/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Conductor == null)
-            {
+        public async Task<IActionResult> Delete(int? id) {
+            if (id == null || _context.Conductor == null) {
                 return NotFound();
             }
 
             var conductor = await _context.Conductor
                 .FirstOrDefaultAsync(m => m.IntCedula == id);
-            if (conductor == null)
-            {
+            if (conductor == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: Conductor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? id)
-        {
-            if (_context.Conductor == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(int? id) {
+            if (_context.Conductor == null) {
                 return Problem("Entity set 'ViasContext.Conductor'  is null.");
             }
             var conductor = await _context.Conductor.FindAsync(id);
-            if (conductor != null)
-            {
+            if (conductor != null) {
                 _context.Conductor.Remove(conductor);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ConductorExists(int? id)
-        {
+        private bool ConductorExists(int? id) {
             return _context.Conductor.Any(e => e.IntCedula == id);
         }
     }

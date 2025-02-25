@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Vias.Data;
 
-namespace Vias.Controllers
-{
-    public class RegistroEliminadoController : Controller
-    {
+namespace Vias.Controllers {
+
+    /**
+     * TODO: Description of {@code RegistroEliminadoController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class RegistroEliminadoController : Controller {
         private readonly ViasContext _context;
 
-        public RegistroEliminadoController(ViasContext context)
-        {
+        public RegistroEliminadoController(ViasContext context) {
             _context = context;
         }
 
         // GET: RegistroEliminado
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
             return View(await _context.RegistroEliminado.ToListAsync());
         }
 
         // GET: RegistroEliminado/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null || _context.RegistroEliminado == null)
-            {
+        public async Task<IActionResult> Details(string id) {
+            if (id == null || _context.RegistroEliminado == null) {
                 return NotFound();
             }
 
             var registroEliminado = await _context.RegistroEliminado
                 .FirstOrDefaultAsync(m => m.StrPlaca == id);
-            if (registroEliminado == null)
-            {
+            if (registroEliminado == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Vias.Controllers
         }
 
         // GET: RegistroEliminado/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StrPlaca,StrCaso,StrConductor,IntCedula,StrMateriaPrimaProducto,StrClienteProveedor,StrOrigenDestino,StrFechaEntrada,StrHoraEntrada,StrFechaPesoVacio,StrHoraPesoVacio,StrFechaDespachoPlanta,StrHoraDespachoPlanta,StrFechaPesoLleno,StrHoraPesoLleno,StrFechaSalida,StrHoraSalida,IntBruto,IntTara,IntNeto,StrNoShipment,StrNoSello,StrNoR,StrNoContenedor,StrOperario,StrNickOperario,StrObservaciones,StrTransportadora,StrPlanta")] RegistroEliminado registroEliminado)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("StrPlaca,StrCaso,StrConductor,IntCedula,StrMateriaPrimaProducto,StrClienteProveedor,StrOrigenDestino,StrFechaEntrada,StrHoraEntrada,StrFechaPesoVacio,StrHoraPesoVacio,StrFechaDespachoPlanta,StrHoraDespachoPlanta,StrFechaPesoLleno,StrHoraPesoLleno,StrFechaSalida,StrHoraSalida,IntBruto,IntTara,IntNeto,StrNoShipment,StrNoSello,StrNoR,StrNoContenedor,StrOperario,StrNickOperario,StrObservaciones,StrTransportadora,StrPlanta")] RegistroEliminado registroEliminado) {
+            if (ModelState.IsValid) {
                 _context.Add(registroEliminado);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Vias.Controllers
         }
 
         // GET: RegistroEliminado/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null || _context.RegistroEliminado == null)
-            {
+        public async Task<IActionResult> Edit(string id) {
+            if (id == null || _context.RegistroEliminado == null) {
                 return NotFound();
             }
 
             var registroEliminado = await _context.RegistroEliminado.FindAsync(id);
-            if (registroEliminado == null)
-            {
+            if (registroEliminado == null) {
                 return NotFound();
             }
             return View(registroEliminado);
@@ -100,28 +94,21 @@ namespace Vias.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StrPlaca,StrCaso,StrConductor,IntCedula,StrMateriaPrimaProducto,StrClienteProveedor,StrOrigenDestino,StrFechaEntrada,StrHoraEntrada,StrFechaPesoVacio,StrHoraPesoVacio,StrFechaDespachoPlanta,StrHoraDespachoPlanta,StrFechaPesoLleno,StrHoraPesoLleno,StrFechaSalida,StrHoraSalida,IntBruto,IntTara,IntNeto,StrNoShipment,StrNoSello,StrNoR,StrNoContenedor,StrOperario,StrNickOperario,StrObservaciones,StrTransportadora,StrPlanta")] RegistroEliminado registroEliminado)
-        {
-            if (id != registroEliminado.StrPlaca)
-            {
+        public async Task<IActionResult> Edit(string id, [Bind("StrPlaca,StrCaso,StrConductor,IntCedula,StrMateriaPrimaProducto,StrClienteProveedor,StrOrigenDestino,StrFechaEntrada,StrHoraEntrada,StrFechaPesoVacio,StrHoraPesoVacio,StrFechaDespachoPlanta,StrHoraDespachoPlanta,StrFechaPesoLleno,StrHoraPesoLleno,StrFechaSalida,StrHoraSalida,IntBruto,IntTara,IntNeto,StrNoShipment,StrNoSello,StrNoR,StrNoContenedor,StrOperario,StrNickOperario,StrObservaciones,StrTransportadora,StrPlanta")] RegistroEliminado registroEliminado) {
+            if (id != registroEliminado.StrPlaca) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(registroEliminado);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RegistroEliminadoExists(registroEliminado.StrPlaca))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!RegistroEliminadoExists(registroEliminado.StrPlaca)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Vias.Controllers
         }
 
         // GET: RegistroEliminado/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null || _context.RegistroEliminado == null)
-            {
+        public async Task<IActionResult> Delete(string id) {
+            if (id == null || _context.RegistroEliminado == null) {
                 return NotFound();
             }
 
             var registroEliminado = await _context.RegistroEliminado
                 .FirstOrDefaultAsync(m => m.StrPlaca == id);
-            if (registroEliminado == null)
-            {
+            if (registroEliminado == null) {
                 return NotFound();
             }
 
@@ -151,15 +135,12 @@ namespace Vias.Controllers
         // POST: RegistroEliminado/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            if (_context.RegistroEliminado == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(string id) {
+            if (_context.RegistroEliminado == null) {
                 return Problem("Entity set 'ViasContext.RegistroEliminado'  is null.");
             }
             var registroEliminado = await _context.RegistroEliminado.FindAsync(id);
-            if (registroEliminado != null)
-            {
+            if (registroEliminado != null) {
                 _context.RegistroEliminado.Remove(registroEliminado);
             }
 
@@ -167,8 +148,7 @@ namespace Vias.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RegistroEliminadoExists(string id)
-        {
+        private bool RegistroEliminadoExists(string id) {
             return _context.RegistroEliminado.Any(e => e.StrPlaca == id);
         }
     }
