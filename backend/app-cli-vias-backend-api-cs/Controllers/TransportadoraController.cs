@@ -33,16 +33,26 @@ namespace Vias.Controllers {
     public class TransportadoraController : Controller {
         private readonly ViasContext _context;
 
+        /**
+         * TODO: Description of method {@code TransportadoraController}.
+         *
+         */
         public TransportadoraController(ViasContext context) {
             _context = context;
         }
 
-        // GET: Transportadora
+        /**
+         * GET: Transportadora
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Transportadora.ToListAsync());
         }
 
-        // GET: Transportadora/Details/5
+        /**
+         * GET: Transportadora/Details/5
+         *
+         */
         public async Task<IActionResult> Details(string id) {
             if (id == null || _context.Transportadora == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Vias.Controllers {
             return View(transportadora);
         }
 
-        // GET: Transportadora/Create
+        /**
+         * GET: Transportadora/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Transportadora/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Transportadora/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StrNombre,StrNit,StrDireccion,StrTelefono,StrFax,StrObservaciones")] Transportadora transportadora) {
@@ -76,7 +92,10 @@ namespace Vias.Controllers {
             return View(transportadora);
         }
 
-        // GET: Transportadora/Edit/5
+        /**
+         * GET: Transportadora/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(string id) {
             if (id == null || _context.Transportadora == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Vias.Controllers {
             return View(transportadora);
         }
 
-        // POST: Transportadora/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Transportadora/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("StrNombre,StrNit,StrDireccion,StrTelefono,StrFax,StrObservaciones")] Transportadora transportadora) {
@@ -117,7 +139,10 @@ namespace Vias.Controllers {
             return View(transportadora);
         }
 
-        // GET: Transportadora/Delete/5
+        /**
+         * GET: Transportadora/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(string id) {
             if (id == null || _context.Transportadora == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Vias.Controllers {
             return View(transportadora);
         }
 
-        // POST: Transportadora/Delete/5
+        /**
+         * POST: Transportadora/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id) {
@@ -148,6 +176,10 @@ namespace Vias.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code TransportadoraExists}.
+         *
+         */
         private bool TransportadoraExists(string id) {
             return _context.Transportadora.Any(e => e.StrNombre == id);
         }

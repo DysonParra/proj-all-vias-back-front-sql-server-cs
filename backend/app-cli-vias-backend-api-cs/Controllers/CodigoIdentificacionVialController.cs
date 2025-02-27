@@ -33,16 +33,26 @@ namespace Vias.Controllers {
     public class CodigoIdentificacionVialController : Controller {
         private readonly ViasContext _context;
 
+        /**
+         * TODO: Description of method {@code CodigoIdentificacionVialController}.
+         *
+         */
         public CodigoIdentificacionVialController(ViasContext context) {
             _context = context;
         }
 
-        // GET: CodigoIdentificacionVial
+        /**
+         * GET: CodigoIdentificacionVial
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.CodigoIdentificacionVial.ToListAsync());
         }
 
-        // GET: CodigoIdentificacionVial/Details/5
+        /**
+         * GET: CodigoIdentificacionVial/Details/5
+         *
+         */
         public async Task<IActionResult> Details(string id) {
             if (id == null || _context.CodigoIdentificacionVial == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Vias.Controllers {
             return View(codigoIdentificacionVial);
         }
 
-        // GET: CodigoIdentificacionVial/Create
+        /**
+         * GET: CodigoIdentificacionVial/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: CodigoIdentificacionVial/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: CodigoIdentificacionVial/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StrCiv,StrNombreEjeVia,StrNombreExtremoInicial,StrNombreExtremoFinal,StrTipoMalla")] CodigoIdentificacionVial codigoIdentificacionVial) {
@@ -76,7 +92,10 @@ namespace Vias.Controllers {
             return View(codigoIdentificacionVial);
         }
 
-        // GET: CodigoIdentificacionVial/Edit/5
+        /**
+         * GET: CodigoIdentificacionVial/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(string id) {
             if (id == null || _context.CodigoIdentificacionVial == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Vias.Controllers {
             return View(codigoIdentificacionVial);
         }
 
-        // POST: CodigoIdentificacionVial/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: CodigoIdentificacionVial/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("StrCiv,StrNombreEjeVia,StrNombreExtremoInicial,StrNombreExtremoFinal,StrTipoMalla")] CodigoIdentificacionVial codigoIdentificacionVial) {
@@ -117,7 +139,10 @@ namespace Vias.Controllers {
             return View(codigoIdentificacionVial);
         }
 
-        // GET: CodigoIdentificacionVial/Delete/5
+        /**
+         * GET: CodigoIdentificacionVial/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(string id) {
             if (id == null || _context.CodigoIdentificacionVial == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Vias.Controllers {
             return View(codigoIdentificacionVial);
         }
 
-        // POST: CodigoIdentificacionVial/Delete/5
+        /**
+         * POST: CodigoIdentificacionVial/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id) {
@@ -148,6 +176,10 @@ namespace Vias.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code CodigoIdentificacionVialExists}.
+         *
+         */
         private bool CodigoIdentificacionVialExists(string id) {
             return _context.CodigoIdentificacionVial.Any(e => e.StrCiv == id);
         }

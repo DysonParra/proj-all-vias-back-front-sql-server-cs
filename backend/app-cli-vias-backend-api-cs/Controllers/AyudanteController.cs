@@ -33,16 +33,26 @@ namespace Vias.Controllers {
     public class AyudanteController : Controller {
         private readonly ViasContext _context;
 
+        /**
+         * TODO: Description of method {@code AyudanteController}.
+         *
+         */
         public AyudanteController(ViasContext context) {
             _context = context;
         }
 
-        // GET: Ayudante
+        /**
+         * GET: Ayudante
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Ayudante.ToListAsync());
         }
 
-        // GET: Ayudante/Details/5
+        /**
+         * GET: Ayudante/Details/5
+         *
+         */
         public async Task<IActionResult> Details(int? id) {
             if (id == null || _context.Ayudante == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Vias.Controllers {
             return View(ayudante);
         }
 
-        // GET: Ayudante/Create
+        /**
+         * GET: Ayudante/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Ayudante/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Ayudante/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntCedula,StrNombre,StrEstado")] Ayudante ayudante) {
@@ -76,7 +92,10 @@ namespace Vias.Controllers {
             return View(ayudante);
         }
 
-        // GET: Ayudante/Edit/5
+        /**
+         * GET: Ayudante/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(int? id) {
             if (id == null || _context.Ayudante == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Vias.Controllers {
             return View(ayudante);
         }
 
-        // POST: Ayudante/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Ayudante/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int? id, [Bind("IntCedula,StrNombre,StrEstado")] Ayudante ayudante) {
@@ -117,7 +139,10 @@ namespace Vias.Controllers {
             return View(ayudante);
         }
 
-        // GET: Ayudante/Delete/5
+        /**
+         * GET: Ayudante/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(int? id) {
             if (id == null || _context.Ayudante == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Vias.Controllers {
             return View(ayudante);
         }
 
-        // POST: Ayudante/Delete/5
+        /**
+         * POST: Ayudante/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id) {
@@ -148,6 +176,10 @@ namespace Vias.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code AyudanteExists}.
+         *
+         */
         private bool AyudanteExists(int? id) {
             return _context.Ayudante.Any(e => e.IntCedula == id);
         }

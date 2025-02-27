@@ -33,16 +33,26 @@ namespace Vias.Controllers {
     public class ClienteController : Controller {
         private readonly ViasContext _context;
 
+        /**
+         * TODO: Description of method {@code ClienteController}.
+         *
+         */
         public ClienteController(ViasContext context) {
             _context = context;
         }
 
-        // GET: Cliente
+        /**
+         * GET: Cliente
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Cliente.ToListAsync());
         }
 
-        // GET: Cliente/Details/5
+        /**
+         * GET: Cliente/Details/5
+         *
+         */
         public async Task<IActionResult> Details(string id) {
             if (id == null || _context.Cliente == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Vias.Controllers {
             return View(cliente);
         }
 
-        // GET: Cliente/Create
+        /**
+         * GET: Cliente/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Cliente/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Cliente/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StrNit,StrNombre,StrDireccion,StrTelefono,StrFax,StrObservaciones")] Cliente cliente) {
@@ -76,7 +92,10 @@ namespace Vias.Controllers {
             return View(cliente);
         }
 
-        // GET: Cliente/Edit/5
+        /**
+         * GET: Cliente/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(string id) {
             if (id == null || _context.Cliente == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Vias.Controllers {
             return View(cliente);
         }
 
-        // POST: Cliente/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Cliente/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("StrNit,StrNombre,StrDireccion,StrTelefono,StrFax,StrObservaciones")] Cliente cliente) {
@@ -117,7 +139,10 @@ namespace Vias.Controllers {
             return View(cliente);
         }
 
-        // GET: Cliente/Delete/5
+        /**
+         * GET: Cliente/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(string id) {
             if (id == null || _context.Cliente == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Vias.Controllers {
             return View(cliente);
         }
 
-        // POST: Cliente/Delete/5
+        /**
+         * POST: Cliente/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id) {
@@ -148,6 +176,10 @@ namespace Vias.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code ClienteExists}.
+         *
+         */
         private bool ClienteExists(string id) {
             return _context.Cliente.Any(e => e.StrNit == id);
         }

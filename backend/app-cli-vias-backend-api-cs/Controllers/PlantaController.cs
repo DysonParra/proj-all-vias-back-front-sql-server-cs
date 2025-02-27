@@ -33,16 +33,26 @@ namespace Vias.Controllers {
     public class PlantaController : Controller {
         private readonly ViasContext _context;
 
+        /**
+         * TODO: Description of method {@code PlantaController}.
+         *
+         */
         public PlantaController(ViasContext context) {
             _context = context;
         }
 
-        // GET: Planta
+        /**
+         * GET: Planta
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Planta.ToListAsync());
         }
 
-        // GET: Planta/Details/5
+        /**
+         * GET: Planta/Details/5
+         *
+         */
         public async Task<IActionResult> Details(string id) {
             if (id == null || _context.Planta == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Vias.Controllers {
             return View(planta);
         }
 
-        // GET: Planta/Create
+        /**
+         * GET: Planta/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Planta/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Planta/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles")] Planta planta) {
@@ -76,7 +92,10 @@ namespace Vias.Controllers {
             return View(planta);
         }
 
-        // GET: Planta/Edit/5
+        /**
+         * GET: Planta/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(string id) {
             if (id == null || _context.Planta == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Vias.Controllers {
             return View(planta);
         }
 
-        // POST: Planta/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Planta/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles")] Planta planta) {
@@ -117,7 +139,10 @@ namespace Vias.Controllers {
             return View(planta);
         }
 
-        // GET: Planta/Delete/5
+        /**
+         * GET: Planta/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(string id) {
             if (id == null || _context.Planta == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Vias.Controllers {
             return View(planta);
         }
 
-        // POST: Planta/Delete/5
+        /**
+         * POST: Planta/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id) {
@@ -148,6 +176,10 @@ namespace Vias.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code PlantaExists}.
+         *
+         */
         private bool PlantaExists(string id) {
             return _context.Planta.Any(e => e.StrCodigo == id);
         }

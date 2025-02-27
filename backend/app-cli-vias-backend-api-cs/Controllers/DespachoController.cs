@@ -33,16 +33,26 @@ namespace Vias.Controllers {
     public class DespachoController : Controller {
         private readonly ViasContext _context;
 
+        /**
+         * TODO: Description of method {@code DespachoController}.
+         *
+         */
         public DespachoController(ViasContext context) {
             _context = context;
         }
 
-        // GET: Despacho
+        /**
+         * GET: Despacho
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Despacho.ToListAsync());
         }
 
-        // GET: Despacho/Details/5
+        /**
+         * GET: Despacho/Details/5
+         *
+         */
         public async Task<IActionResult> Details(int? id) {
             if (id == null || _context.Despacho == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Vias.Controllers {
             return View(despacho);
         }
 
-        // GET: Despacho/Create
+        /**
+         * GET: Despacho/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Despacho/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Despacho/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntNoTiquete,StrPlaca,StrConductor,IntCedula,StrProducto,StrFechaEntrada,StrHoraEntrada,StrFechaPesoVacio,StrHoraPesoVacio,StrFechaDespachoPlanta,StrHoraDespachoPlanta,StrFechaPesoLleno,StrHoraPesoLleno,StrFechaSalida,StrHoraSalida,IntBruto,IntTara,IntNeto,StrNoShipment,StrNoSello,StrNoR,StrNoContenedor,StrOperario,StrNickOperario,StrObservaciones,StrNoInterno,StrCodigo,StrTipoVehiculo,StrTipoProducto,StrDireccion,StrEntregadoPor,StrRecibidoPor,StrUnidad,StrVolumen,StrCiv,StrIdProducto,StrDestino,StrCliente,StrPlanta,StrTransportadora")] Despacho despacho) {
@@ -76,7 +92,10 @@ namespace Vias.Controllers {
             return View(despacho);
         }
 
-        // GET: Despacho/Edit/5
+        /**
+         * GET: Despacho/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(int? id) {
             if (id == null || _context.Despacho == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Vias.Controllers {
             return View(despacho);
         }
 
-        // POST: Despacho/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Despacho/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int? id, [Bind("IntNoTiquete,StrPlaca,StrConductor,IntCedula,StrProducto,StrFechaEntrada,StrHoraEntrada,StrFechaPesoVacio,StrHoraPesoVacio,StrFechaDespachoPlanta,StrHoraDespachoPlanta,StrFechaPesoLleno,StrHoraPesoLleno,StrFechaSalida,StrHoraSalida,IntBruto,IntTara,IntNeto,StrNoShipment,StrNoSello,StrNoR,StrNoContenedor,StrOperario,StrNickOperario,StrObservaciones,StrNoInterno,StrCodigo,StrTipoVehiculo,StrTipoProducto,StrDireccion,StrEntregadoPor,StrRecibidoPor,StrUnidad,StrVolumen,StrCiv,StrIdProducto,StrDestino,StrCliente,StrPlanta,StrTransportadora")] Despacho despacho) {
@@ -117,7 +139,10 @@ namespace Vias.Controllers {
             return View(despacho);
         }
 
-        // GET: Despacho/Delete/5
+        /**
+         * GET: Despacho/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(int? id) {
             if (id == null || _context.Despacho == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Vias.Controllers {
             return View(despacho);
         }
 
-        // POST: Despacho/Delete/5
+        /**
+         * POST: Despacho/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id) {
@@ -148,6 +176,10 @@ namespace Vias.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code DespachoExists}.
+         *
+         */
         private bool DespachoExists(int? id) {
             return _context.Despacho.Any(e => e.IntNoTiquete == id);
         }

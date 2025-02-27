@@ -33,16 +33,26 @@ namespace Vias.Controllers {
     public class IngresoController : Controller {
         private readonly ViasContext _context;
 
+        /**
+         * TODO: Description of method {@code IngresoController}.
+         *
+         */
         public IngresoController(ViasContext context) {
             _context = context;
         }
 
-        // GET: Ingreso
+        /**
+         * GET: Ingreso
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Ingreso.ToListAsync());
         }
 
-        // GET: Ingreso/Details/5
+        /**
+         * GET: Ingreso/Details/5
+         *
+         */
         public async Task<IActionResult> Details(int? id) {
             if (id == null || _context.Ingreso == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Vias.Controllers {
             return View(ingreso);
         }
 
-        // GET: Ingreso/Create
+        /**
+         * GET: Ingreso/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Ingreso/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Ingreso/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntNoTiquete,StrPlaca,StrConductor,IntCedula,StrProveedor,StrFechaEntrada,StrHoraEntrada,StrFechaPesoVacio,StrHoraPesoVacio,StrFechaDespachoPlanta,StrHoraDespachoPlanta,StrFechaPesoLleno,StrHoraPesoLleno,StrFechaSalida,StrHoraSalida,IntBruto,IntTara,IntNeto,StrNoShipment,StrNoSello,StrNoR,StrNoContenedor,StrOperario,StrNickOperario,StrObservaciones,StrNoInterno,StrCodigo,StrTipoVehiculo,StrTipoProducto,StrDireccion,StrEntregadoPor,StrRecibidoPor,StrUnidad,StrVolumen,StrMateriaPrima,StrPlanta,StrTransportadora,StrOrigen")] Ingreso ingreso) {
@@ -76,7 +92,10 @@ namespace Vias.Controllers {
             return View(ingreso);
         }
 
-        // GET: Ingreso/Edit/5
+        /**
+         * GET: Ingreso/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(int? id) {
             if (id == null || _context.Ingreso == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Vias.Controllers {
             return View(ingreso);
         }
 
-        // POST: Ingreso/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Ingreso/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int? id, [Bind("IntNoTiquete,StrPlaca,StrConductor,IntCedula,StrProveedor,StrFechaEntrada,StrHoraEntrada,StrFechaPesoVacio,StrHoraPesoVacio,StrFechaDespachoPlanta,StrHoraDespachoPlanta,StrFechaPesoLleno,StrHoraPesoLleno,StrFechaSalida,StrHoraSalida,IntBruto,IntTara,IntNeto,StrNoShipment,StrNoSello,StrNoR,StrNoContenedor,StrOperario,StrNickOperario,StrObservaciones,StrNoInterno,StrCodigo,StrTipoVehiculo,StrTipoProducto,StrDireccion,StrEntregadoPor,StrRecibidoPor,StrUnidad,StrVolumen,StrMateriaPrima,StrPlanta,StrTransportadora,StrOrigen")] Ingreso ingreso) {
@@ -117,7 +139,10 @@ namespace Vias.Controllers {
             return View(ingreso);
         }
 
-        // GET: Ingreso/Delete/5
+        /**
+         * GET: Ingreso/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(int? id) {
             if (id == null || _context.Ingreso == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Vias.Controllers {
             return View(ingreso);
         }
 
-        // POST: Ingreso/Delete/5
+        /**
+         * POST: Ingreso/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id) {
@@ -148,6 +176,10 @@ namespace Vias.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code IngresoExists}.
+         *
+         */
         private bool IngresoExists(int? id) {
             return _context.Ingreso.Any(e => e.IntNoTiquete == id);
         }

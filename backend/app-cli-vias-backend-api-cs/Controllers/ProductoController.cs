@@ -33,16 +33,26 @@ namespace Vias.Controllers {
     public class ProductoController : Controller {
         private readonly ViasContext _context;
 
+        /**
+         * TODO: Description of method {@code ProductoController}.
+         *
+         */
         public ProductoController(ViasContext context) {
             _context = context;
         }
 
-        // GET: Producto
+        /**
+         * GET: Producto
+         *
+         */
         public async Task<IActionResult> Index() {
             return View(await _context.Producto.ToListAsync());
         }
 
-        // GET: Producto/Details/5
+        /**
+         * GET: Producto/Details/5
+         *
+         */
         public async Task<IActionResult> Details(string id) {
             if (id == null || _context.Producto == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Vias.Controllers {
             return View(producto);
         }
 
-        // GET: Producto/Create
+        /**
+         * GET: Producto/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Producto/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Producto/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] Producto producto) {
@@ -76,7 +92,10 @@ namespace Vias.Controllers {
             return View(producto);
         }
 
-        // GET: Producto/Edit/5
+        /**
+         * GET: Producto/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(string id) {
             if (id == null || _context.Producto == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Vias.Controllers {
             return View(producto);
         }
 
-        // POST: Producto/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Producto/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("StrCodigo,StrNombre,StrDetalles,StrTipo")] Producto producto) {
@@ -117,7 +139,10 @@ namespace Vias.Controllers {
             return View(producto);
         }
 
-        // GET: Producto/Delete/5
+        /**
+         * GET: Producto/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(string id) {
             if (id == null || _context.Producto == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Vias.Controllers {
             return View(producto);
         }
 
-        // POST: Producto/Delete/5
+        /**
+         * POST: Producto/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id) {
@@ -148,6 +176,10 @@ namespace Vias.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code ProductoExists}.
+         *
+         */
         private bool ProductoExists(string id) {
             return _context.Producto.Any(e => e.StrCodigo == id);
         }
