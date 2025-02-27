@@ -28,7 +28,12 @@ namespace Vias.Data {
      * @since .NET 8 (LTS), C# 12
      */
     public class ViasContext : DbContext {
-        public ViasContext (DbContextOptions<ViasContext> options)
+
+        /**
+         * TODO: Description of method {@code ViasContext}.
+         *
+         */
+        public ViasContext(DbContextOptions<ViasContext> options)
             : base(options) {
         }
 
