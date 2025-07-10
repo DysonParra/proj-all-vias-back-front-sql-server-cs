@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {MateriaPrimaController}
+ * @overview        {MateriaPrimaController}
  *
  * @version         2.0
  *

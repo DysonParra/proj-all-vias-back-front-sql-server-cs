@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {RegistroEliminadoController}
+ * @overview        {RegistroEliminadoController}
  *
  * @version         2.0
  *
